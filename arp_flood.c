@@ -152,19 +152,23 @@ int main() {
     srand((unsigned)time(NULL));
 
     char* dev = choose_dev(devs, k_devs);
+    if (dev == NULL) {
+        dev_free(devs, k_devs);
+        return 1;
+    }
     
     printf("input arp packets amount: ");
     if (scanf("%d", &k_arp_packets) != 1 || k_arp_packets <= 0) {
         printf("%s", "invalid arp packets amount\n");
         dev_free(devs, k_devs);
-        return 1;
+        return 2;
     }
     // interface, packet size, promiscouous flag, read timeout (ms), authentication, error buffer) 
     handle = pcap_open(dev, 65536, PCAP_OPENFLAG_PROMISCUOUS, 1000, NULL, errbuf);
     if (handle == NULL) {
         printf("can't open device %s: %s\n", dev, errbuf);
         dev_free(devs, k_devs);
-        return 2;
+        return 3;
     }
 
     for (int n = 0; n < k_arp_packets; n++) {
