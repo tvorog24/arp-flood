@@ -9,19 +9,30 @@
 #define ARP_PACKET_LEN 18 + 24
 
 
-void rand_fill(uint8_t* vec, size_t len) {
-    for (int i = 0; i < len; i++) {
+void rand_mac_fill(uint8_t* vec, short int is_src) {
+    for (int i = 0; i < 6; i++) {
         vec[i] = rand() % 256;
     } 
+    // avoid group mac
+    if (is_src) {
+        vec[0] = vec[0] - (vec[0] % 2);
+    }
+}
+
+void rand_ip_fill(uint8_t* vec) {
+    for (int i = 0; i < 3; i++) {
+        vec[i] = rand() % 256;
+    }
+    vec[3] = 1 + rand() % 255;
 }
 
 void fill_packet(uint8_t* packet) {
     uint8_t sender_mac[6], target_mac[6], sender_ip[4], target_ip[4];
 
-    rand_fill(sender_mac, 6);
-    rand_fill(target_mac, 6);
-    rand_fill(sender_ip, 4);
-    rand_fill(target_ip, 4);
+    rand_mac_fill(sender_mac, 1);
+    rand_mac_fill(target_mac, 0);
+    rand_ip_fill(sender_ip);
+    rand_ip_fill(target_ip);
     // ethernet header
     memcpy(packet, target_mac, 6);
     memcpy(packet + 6, sender_mac, 6);
