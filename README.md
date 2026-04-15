@@ -11,7 +11,9 @@ arp-flood allows to send specified number of randomly composed ARP Reply packets
 
 ## Installation
 ### Clone the repository
-```git clone https://github.com/tvorog24/arp-flood.git```
+```powershell
+PS> git clone https://github.com/tvorog24/arp-flood.git
+```
 ### Install dependencies
 Download and install Npcap SDK to `C:\npcap-sdk`
 
