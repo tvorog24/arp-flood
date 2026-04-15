@@ -163,7 +163,7 @@ int main() {
         dev_free(devs, k_devs);
         return 2;
     }
-    // interface, packet size, promiscouous flag, read timeout (ms), authentication, error buffer) 
+    // interface, packet size, promiscuous flag, read timeout (ms), authentication, error buffer) 
     handle = pcap_open(dev, 65536, PCAP_OPENFLAG_PROMISCUOUS, 1000, NULL, errbuf);
     if (handle == NULL) {
         printf("can't open device %s: %s\n", dev, errbuf);
