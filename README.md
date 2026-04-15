@@ -17,6 +17,8 @@ PS> git clone https://github.com/tvorog24/arp-flood.git
 ### Install dependencies
 Download and install Npcap SDK to `C:\npcap-sdk`
 
+Copy `wpcap.dll` and `Packet.dll` from `C:\System32\Npcap` to a working directory 
+
 ## Building
 > **Important:**
 > `gcc.exe` and `make.exe` must be included in your `PATH`
