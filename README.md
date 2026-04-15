@@ -30,5 +30,5 @@ PS> make clean
 > Run PowerShell as Administator
 
 ```powershell 
-PS> .\arp_flood
+PS> .\arp_flood.exe
 ```
