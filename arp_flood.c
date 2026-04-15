@@ -117,6 +117,7 @@ int fill_devs(char*** devs) {
 
     if (k_devs == 0) {
         printf("no interfaces found\n");
+        free(*devs);
     }
 
     pcap_freealldevs(alldevs);
@@ -145,7 +146,6 @@ int main() {
 
     int k_devs = fill_devs(&devs);
     if (k_devs <= 0) {
-        dev_free(devs, k_devs);
         return -1;
     }
      
