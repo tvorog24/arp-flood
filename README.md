@@ -36,7 +36,7 @@ PS> make clean
 ```powershell 
 PS> .\arp_flood.exe
 ```
-## Demostration
+## Demonstration
 
 ![powershell](ps.png)
 
